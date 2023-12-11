@@ -19,7 +19,7 @@ I incorporated the option to select from three different cryptography algorithms
 
 ## Guide
 
-My project is quite user-friendly. Once navigating to the default Flask address (http://127.0.0.1:5000/), there are four object that ask for user input. You must first select your cipher type in the drop down menu, then your action (decrypt/encrypt). Then you can input your message and optional key. Once you have completed these steps, simply hit submit.
+My project is quite user-friendly. Once navigating to the default Flask address (http://127.0.0.1:5000/), there are four objects that ask for user input. You must first select your cipher type in the drop down menu, then your action (decrypt/encrypt). Then you can input your message and optional key. Once you have completed these steps, simply hit submit.
 
 
 ## Installation Instructions
