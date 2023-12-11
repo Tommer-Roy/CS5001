@@ -1,0 +1,51 @@
+PS C:\Users\tomme\OneDrive\Documents\MSCS Northeastern\CS 5001\Final Project\CS5001\Final Project\Flask> & C:/Users/tomme/AppData/Local/Microsoft/WindowsApps/python3.11.exe "c:/Users/tomme/OneDrive/Documents/MSCS Northeastern/CS 5001/Final Project/CS5001/Final Project/Flask/app_test.py"
+Trying:
+    atbash_cipher("Hello, World!")
+Expecting:
+    'Svool, Dliow!'
+ok
+Trying:
+    atbash_cipher("R orpv gl kozb gsv tfrgzi")
+Expecting:
+    'I like to play the guitar'
+ok
+Trying:
+    caesar_cipher("Hello, World!", 3)
+Expecting:
+    'Khoor, Zruog!'
+ok
+Trying:
+    caesar_cipher("Test123", 5)
+Expecting:
+    'Yjxy123'
+ok
+Trying:
+    decrypt_message("kV99p, dM 65dV Tv 7pddVj!", "o8OcJmZyQq5hP0VXfUTIA9d6plHjvLND4YMEzW1bCGakrKnR3wFsgxS7u2eBit")
+Expecting:
+    'Hello, my name is Tommer!'
+ok
+Trying:
+    decrypt_message("Test123", "ab")
+Expecting:
+    'Test123'
+ok
+Trying:
+    encrypt_message("Hello, my name is Tommer!", "o8OcJmZyQq5hP0VXfUTIA9d6plHjvLND4YMEzW1bCGakrKnR3wFsgxS7u2eBit")
+Expecting:
+    'kV99p, dM 65dV Tv 7pddVj!'
+ok
+Trying:
+    encrypt_message("I like to snowboard and watch football", "SgvQoWwX45DyenrMKNFPJImcOUxZRk6l0GTtE8BCz73VsLqu9ph1Aibj2dfYaH")
+Expecting:
+    's IFJr kO RcO0yODZn Dcn 0DkeN MOOkyDII'
+ok
+1 items had no tests:
+    __main__
+4 items passed all tests:
+   2 tests in __main__.atbash_cipher
+   2 tests in __main__.caesar_cipher
+   2 tests in __main__.decrypt_message
+   2 tests in __main__.encrypt_message
+8 tests in 5 items.
+8 passed and 0 failed.
+Test passed.

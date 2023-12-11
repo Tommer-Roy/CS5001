@@ -1,6 +1,9 @@
 """
 --------------------------
-Final Project - Cryptography Flask-based Web App 
+Final Project - Cryptography Flask-based Web App
+
+This app leverages the midterm cryptography assignment, but adds two additional cryptography
+algorithms and incorporates the Flask library to host it in an HTML web app.
 --------------------------
 STUDENT: Tommer Ben-Joseph
 SEMESTER: Fall 2023
@@ -38,11 +41,11 @@ def encrypt_message(message, key):
         str: The encrypted message.
 
     Example:
-    >>> encrypt_message("Hello, World!", "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA")
-    'Svool, Dliow!'
+    >>> encrypt_message("Hello, my name is Tommer!", "o8OcJmZyQq5hP0VXfUTIA9d6plHjvLND4YMEzW1bCGakrKnR3wFsgxS7u2eBit")
+    'kV99p, dM 65dV Tv 7pddVj!'
 
-    >>> encrypt_message("Test123", "ab")
-    'Test123'
+    >>> encrypt_message("I like to snowboard and watch football", "SgvQoWwX45DyenrMKNFPJImcOUxZRk6l0GTtE8BCz73VsLqu9ph1Aibj2dfYaH")
+    's IFJr kO RcO0yODZn Dcn 0DkeN MOOkyDII'
     """
     encrypted_message = ''
     for char in message:
@@ -73,8 +76,8 @@ def decrypt_message(encrypted_message, key):
         str: The decrypted message.
 
     Example:
-    >>> decrypt_message("Svool, Dliow!", "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA")
-    'Hello, World!'
+    >>> decrypt_message("kV99p, dM 65dV Tv 7pddVj!", "o8OcJmZyQq5hP0VXfUTIA9d6plHjvLND4YMEzW1bCGakrKnR3wFsgxS7u2eBit")
+    'Hello, my name is Tommer!'
 
     >>> decrypt_message("Test123", "ab")
     'Test123'
@@ -89,9 +92,11 @@ def decrypt_message(encrypted_message, key):
             decrypted_message += char
     return decrypted_message
 
+
 def caesar_cipher(text, shift=None):
     """
-    Performs Caesar Cipher encryption and decryption.
+    Performs Caesar Cipher encryption and decryption. Shifts each letter in the message
+    down a set number of letters in the alphabet when enccrypting. Defaults to 2.
 
     Args:
         text (str): The message to be encrypted or decrypted.
@@ -122,9 +127,11 @@ def caesar_cipher(text, shift=None):
             decrypted_message += char
     return decrypted_message
 
+
 def atbash_cipher(text):
     """
-    Performs Atbash Cipher encryption and decryption.
+    Performs Atbash Cipher encryption and decryption. Flips the letter to the opposite in the alphabet.
+    i.e. A -> Z, B -> Y, etc.
 
     Args:
         text (str): The message to be encrypted or decrypted.
@@ -136,8 +143,8 @@ def atbash_cipher(text):
     >>> atbash_cipher("Hello, World!")
     'Svool, Dliow!'
 
-    >>> atbash_cipher("Test123")
-    'Gvhg123'
+    >>> atbash_cipher("R orpv gl kozb gsv tfrgzi")
+    'I like to play the guitar'
     """
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     inverted_alphabet = "zyxwvutsrqponmlkjihgfedcba"
@@ -161,15 +168,13 @@ def atbash_cipher(text):
     return result
 
 
-
-
 @app.route("/", methods=["GET", "POST"])
 def main():
     """
     Main function used for primary functionality of the web app.
 
     Returns: renders HTML templates
-    
+
     """
     if request.method == "POST":
         cipher_type = request.form.get("cipher_type")
@@ -197,18 +202,18 @@ def main():
                 encrypted_message = caesar_cipher(message, int(key))
                 return render_template("result.html", cipher_type="Caesar Cipher", result=encrypted_message, key=key)
             elif action == "decrypt":
-                decrypted_message = caesar_cipher(message, -int(key))
+                decrypted_message = caesar_cipher(message, -int(key))  #decryption for Caesar is the opposite mechanism
                 return render_template("result.html", cipher_type="Caesar Cipher", result=decrypted_message, key=key)
         elif cipher_type == "atbash":
             if action == "encrypt":
                 encrypted_message = atbash_cipher(message)
                 return render_template("result.html", cipher_type="Atbash Cipher", result=encrypted_message, key="N/A")
             elif action == "decrypt":
-                decrypted_message = atbash_cipher(message)  
+                decrypted_message = atbash_cipher(message)
                 return render_template("result.html", cipher_type="Atbash Cipher", result=decrypted_message, key="N/A")
 
     return render_template("form.html")
 
+
 if __name__ == "__main__":
     app.run(debug=True)
-

@@ -1,13 +1,14 @@
 """
 --------------------------
-Final Project - Cryptography Flask-based Web App 
+Final Project - Cryptography Flask-based Web App TEST FILE
 --------------------------
 STUDENT: Tommer Ben-Joseph
 SEMESTER: Fall 2023
 """
 
+#Commenting out flask-related commands / operations, as I am just testing the functions here. I will be testing the flask functionality separately.
 
-from flask import Flask, request, render_template
+#from flask import Flask, request, render_template
 from string import digits, ascii_letters
 from random import sample
 
@@ -16,7 +17,7 @@ ALL_LETTERS_DIGITS = digits + ascii_letters
 # Use this random key if none is provided, try printing it out to see what it is
 RANDOM_KEY = "".join(sample(list(ALL_LETTERS_DIGITS), len(ALL_LETTERS_DIGITS)))
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 ACTION_ENCRYPT = 'encrypt'
 ACTION_DECRYPT = 'decrypt'
@@ -38,11 +39,11 @@ def encrypt_message(message, key):
         str: The encrypted message.
 
     Example:
-    >>> encrypt_message("Hello, World!", "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA")
-    'Svool, Dliow!'
+    >>> encrypt_message("Hello, my name is Tommer!", "o8OcJmZyQq5hP0VXfUTIA9d6plHjvLND4YMEzW1bCGakrKnR3wFsgxS7u2eBit")
+    'kV99p, dM 65dV Tv 7pddVj!'
 
-    >>> encrypt_message("Test123", "ab")
-    'Test123'
+    >>> encrypt_message("I like to snowboard and watch football", "SgvQoWwX45DyenrMKNFPJImcOUxZRk6l0GTtE8BCz73VsLqu9ph1Aibj2dfYaH")
+    's IFJr kO RcO0yODZn Dcn 0DkeN MOOkyDII'
     """
     encrypted_message = ''
     for char in message:
@@ -73,8 +74,8 @@ def decrypt_message(encrypted_message, key):
         str: The decrypted message.
 
     Example:
-    >>> decrypt_message("Svool, Dliow!", "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA")
-    'Hello, World!'
+    >>> decrypt_message("kV99p, dM 65dV Tv 7pddVj!", "o8OcJmZyQq5hP0VXfUTIA9d6plHjvLND4YMEzW1bCGakrKnR3wFsgxS7u2eBit")
+    'Hello, my name is Tommer!'
 
     >>> decrypt_message("Test123", "ab")
     'Test123'
@@ -136,8 +137,8 @@ def atbash_cipher(text):
     >>> atbash_cipher("Hello, World!")
     'Svool, Dliow!'
 
-    >>> atbash_cipher("Test123")
-    'Gvhg123'
+    >>> atbash_cipher("R orpv gl kozb gsv tfrgzi")
+    'I like to play the guitar'
     """
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     inverted_alphabet = "zyxwvutsrqponmlkjihgfedcba"
@@ -163,8 +164,8 @@ def atbash_cipher(text):
 
 
 
-@app.route("/", methods=["GET", "POST"])
-def main():
+#@app.route("/", methods=["GET", "POST"])
+#def main():
     """
     Main function used for primary functionality of the web app.
 
@@ -210,7 +211,9 @@ def main():
     return render_template("form.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    #app.run(debug=True)
+
     import doctest
 
-    doctest.testmod(verbose=True)
+    doctest.testmod(verbose=True)    
+
