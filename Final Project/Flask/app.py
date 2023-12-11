@@ -1,3 +1,12 @@
+"""
+--------------------------
+Final Project - Cryptography Flask-based Web App 
+--------------------------
+STUDENT: Tommer Ben-Joseph
+SEMESTER: Fall 2023
+"""
+
+
 from flask import Flask, request, render_template
 from string import digits, ascii_letters
 from random import sample
@@ -27,6 +36,13 @@ def encrypt_message(message, key):
 
     Returns:
         str: The encrypted message.
+
+    Example:
+    >>> encrypt_message("Hello, World!", "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA")
+    'Svool, Dliow!'
+
+    >>> encrypt_message("Test123", "ab")
+    'Test123'
     """
     encrypted_message = ''
     for char in message:
@@ -55,6 +71,13 @@ def decrypt_message(encrypted_message, key):
 
     Returns:
         str: The decrypted message.
+
+    Example:
+    >>> decrypt_message("Svool, Dliow!", "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA")
+    'Hello, World!'
+
+    >>> decrypt_message("Test123", "ab")
+    'Test123'
     """
     decrypted_message = ''
     for char in encrypted_message:
@@ -67,6 +90,23 @@ def decrypt_message(encrypted_message, key):
     return decrypted_message
 
 def caesar_cipher(text, shift=None):
+    """
+    Performs Caesar Cipher encryption and decryption.
+
+    Args:
+        text (str): The message to be encrypted or decrypted.
+        shift (int, optional): The Caesar Cipher shift value. Defaults to 2 for encryption.
+
+    Returns:
+        str: The encrypted or decrypted message.
+
+    Example:
+    >>> caesar_cipher("Hello, World!", 3)
+    'Khoor, Zruog!'
+
+    >>> caesar_cipher("Test123", 5)
+    'Yjxy123'
+    """
     if shift is None:
         shift = 2  # Default shift value
     decrypted_message = ''
@@ -83,10 +123,25 @@ def caesar_cipher(text, shift=None):
     return decrypted_message
 
 def atbash_cipher(text):
+    """
+    Performs Atbash Cipher encryption and decryption.
 
+    Args:
+        text (str): The message to be encrypted or decrypted.
+
+    Returns:
+        str: The encrypted or decrypted message.
+
+    Example:
+    >>> atbash_cipher("Hello, World!")
+    'Svool, Dliow!'
+
+    >>> atbash_cipher("Test123")
+    'Gvhg123'
+    """
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     inverted_alphabet = "zyxwvutsrqponmlkjihgfedcba"
-    
+
     # Replace each character with its opposite in the alphabet
     result = ""
     for char in text:
@@ -102,12 +157,20 @@ def atbash_cipher(text):
             else:
                 result += char
         else:
-            result += char 
+            result += char
     return result
+
+
 
 
 @app.route("/", methods=["GET", "POST"])
 def main():
+    """
+    Main function used for primary functionality of the web app.
+
+    Returns: renders HTML templates
+    
+    """
     if request.method == "POST":
         cipher_type = request.form.get("cipher_type")
         action = request.form.get("action")
@@ -148,3 +211,4 @@ def main():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
