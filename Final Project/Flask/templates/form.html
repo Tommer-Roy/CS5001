@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encryption and Decryption</title>
+</head>
+<body>
+    <h1>Encryption and Decryption</h1>
+    <div id="tips">
+        <h2>Tips</h2>
+        <ul>
+            <li>For best results with the Substitution Cipher, your key should contain as many alphanumeric characters as possible. If you do not input a key, a random key will be generated and provided.</li>
+            <li>The key for the Caesar Cipher must be a numeric value. If you do not provide a key, it will default to 2.</li>
+            <li>Atbash Cipher does not use a key.</li>
+        </ul>
+    </div>
+    <form method="POST" action="/">
+        <label for="cipher_type">Select Cipher Type:</label>
+        <select id="cipher_type" name="cipher_type">
+            <option value="substitution">Substitution Cipher</option>
+            <option value="caesar">Caesar Cipher</option>
+            <option value="atbash">Atbash Cipher</option> <!-- Add this line -->
+        </select>
+        <br><br>
+        <label for="action">Action:</label>
+        <select id="action" name="action">
+            <option value="encrypt">Encrypt</option>
+            <option value="decrypt">Decrypt</option>
+        </select>
+        <br><br>
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message" required><br><br>
+        <label for="key">Key:</label>
+        <input type="text" id="key" name="key"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
